@@ -10,16 +10,16 @@ let currentPage = 'dashboard';
 const modules = {};
 
 // Register a module content renderer
-window.registerModule = function(name, renderFn) {
+window.registerModule = function (name, renderFn) {
     modules[name] = renderFn;
 };
 
 // Global functions for module use
-window.renderPage = function(pageName) {
+window.renderPage = function (pageName) {
     currentPage = pageName;
     const contentDiv = document.getElementById('page-content');
     const pageTitle = document.getElementById('page-title');
-    
+
     // Update active nav
     document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
@@ -43,7 +43,7 @@ window.renderPage = function(pageName) {
             </div>
         `;
     }
-    
+
     // Re-initialize icons in newly injected content
     lucide.createIcons();
 }
@@ -53,7 +53,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const page = e.currentTarget.dataset.page;
-        if(page === 'menu') {
+        if (page === 'menu') {
             document.getElementById('mobile-menu').classList.remove('hidden');
             return;
         }
@@ -70,11 +70,13 @@ async function seedInitialServices() {
             { name: "SEO", unit: "keyword", unitPrice: 1000, minCharge: 6000, editable: true },
             { name: "Content Writing", unit: "500_words", unitPrice: 100, minCharge: 100, editable: true },
             { name: "Google Ads", type: "percentage", percent: 10, minCharge: 5000, editable: true },
-            { name: "WordPress Static Website", defaultPrice: 25000, editable: true, addons: [
-                { name: "Extra Page", price: 1000 },
-                { name: "SEO Setup", price: 3000 },
-                { name: "Speed Optimization", price: 2000 }
-            ]}
+            {
+                name: "WordPress Static Website", defaultPrice: 25000, editable: true, addons: [
+                    { name: "Extra Page", price: 1000 },
+                    { name: "SEO Setup", price: 3000 },
+                    { name: "Speed Optimization", price: 2000 }
+                ]
+            }
         ]);
     }
 }

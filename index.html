@@ -97,13 +97,14 @@
             <!-- Populated by JS -->
         </div>
     </div>
-    <!-- Service Worker Registration -->
+    <!-- Clear PWA Service Worker (Fixing Cache Bug) -->
     <script>
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('PWA Service Worker registered:', reg))
-                    .catch(err => console.error('PWA Service Worker failed:', err));
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for(let registration of registrations) {
+                    registration.unregister();
+                    console.log('Unregistered old Service Worker to fetch fresh updates.');
+                }
             });
         }
     </script>
