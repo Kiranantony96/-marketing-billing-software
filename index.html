@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarkeLedger</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Dexie.js -->
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Core Scripts -->
+    <script src="db.js" defer></script>
+    <script src="app.js" defer></script>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff6a00">
+    <link rel="apple-touch-icon" href="https://img.icons8.com/color/192/000000/activity.png">
+
+    <!-- App Modules -->
+    <script src="modules/clients.js" defer></script>
+    <script src="modules/projects.js" defer></script>
+    <script src="modules/pricing.js" defer></script>
+    <script src="modules/quotations.js" defer></script>
+    <script src="modules/invoices.js" defer></script>
+    <script src="modules/payments.js" defer></script>
+    <script src="modules/recurring.js" defer></script>
+    <script src="modules/expenses.js" defer></script>
+    <script src="modules/staff.js" defer></script>
+    <script src="modules/tasks.js" defer></script>
+    <script src="modules/finance.js" defer></script>
+    <script src="modules/settings.js" defer></script>
+    <script src="modules/about.js" defer></script>
+    <script src="modules/dashboard.js" defer></script>
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- Desktop Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <i data-lucide="layers"></i>
+                <h2>MarkeLedger</h2>
+            </div>
+            <nav id="nav-links" class="nav-links">
+                <a href="#" class="nav-link active" data-page="dashboard"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+                <a href="#" class="nav-link" data-page="clients"><i data-lucide="users"></i> Clients</a>
+                <a href="#" class="nav-link" data-page="projects"><i data-lucide="briefcase"></i> Projects</a>
+                <a href="#" class="nav-link" data-page="pricing"><i data-lucide="tags"></i> Pricing Engine</a>
+                <a href="#" class="nav-link" data-page="quotations"><i data-lucide="file-text"></i> Quotations</a>
+                <a href="#" class="nav-link" data-page="invoices"><i data-lucide="file-spreadsheet"></i> Invoices</a>
+                <a href="#" class="nav-link" data-page="payments"><i data-lucide="credit-card"></i> Payments</a>
+                <a href="#" class="nav-link" data-page="recurring"><i data-lucide="refresh-cw"></i> Recurring</a>
+                <a href="#" class="nav-link" data-page="finance"><i data-lucide="pie-chart"></i> Finance</a>
+                <a href="#" class="nav-link" data-page="staff"><i data-lucide="user-check"></i> Staff</a>
+                <a href="#" class="nav-link" data-page="tasks"><i data-lucide="check-square"></i> Tasks</a>
+                <a href="#" class="nav-link" data-page="expenses"><i data-lucide="receipt"></i> Expenses</a>
+                <a href="#" class="nav-link" data-page="settings"><i data-lucide="settings"></i> Settings</a>
+                <a href="#" class="nav-link" data-page="about"><i data-lucide="info"></i> About</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- Topbar (Desktop) -->
+            <header id="topbar" class="topbar">
+                <div class="topbar-title">
+                    <h1 id="page-title">Dashboard</h1>
+                </div>
+                <div class="topbar-actions">
+                    <button class="btn-icon"><i data-lucide="bell"></i></button>
+                    <div class="user-avatar">AD</div>
+                </div>
+            </header>
+
+            <!-- Dynamic Content -->
+            <div id="page-content" class="page-content">
+                <!-- Content injected via JS -->
+            </div>
+        </main>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav id="bottom-nav" class="bottom-nav">
+            <a href="#" class="nav-link active" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Home</span></a>
+            <a href="#" class="nav-link" data-page="clients"><i data-lucide="users"></i><span>Clients</span></a>
+            <a href="#" class="nav-link" data-page="projects"><i data-lucide="briefcase"></i><span>Projects</span></a>
+            <a href="#" class="nav-link" data-page="menu"><i data-lucide="menu"></i><span>Menu</span></a>
+        </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="mobile-menu hidden">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('PWA Service Worker registered:', reg))
+                    .catch(err => console.error('PWA Service Worker failed:', err));
+            });
+        }
+    </script>
+</body>
+</html>
