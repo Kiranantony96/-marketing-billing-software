@@ -24,7 +24,7 @@
     <!-- App Modules -->
     <script src="modules/clients.js" defer></script>
     <script src="modules/projects.js" defer></script>
-    <script src="modules/pricing.js" defer></script>
+    <script src="modules/rates.js" defer></script>
     <script src="modules/quotations.js" defer></script>
     <script src="modules/invoices.js" defer></script>
     <script src="modules/payments.js" defer></script>
@@ -51,7 +51,7 @@
                     Dashboard</a>
                 <a href="#" class="nav-link" data-page="clients"><i data-lucide="users"></i> Clients</a>
                 <a href="#" class="nav-link" data-page="projects"><i data-lucide="briefcase"></i> Projects</a>
-                <a href="#" class="nav-link" data-page="pricing"><i data-lucide="tags"></i> Pricing Engine</a>
+                <a href="#" class="nav-link" data-page="rates"><i data-lucide="tags"></i> Pricing Engine</a>
                 <a href="#" class="nav-link" data-page="quotations"><i data-lucide="file-text"></i> Quotations</a>
                 <a href="#" class="nav-link" data-page="invoices"><i data-lucide="file-spreadsheet"></i> Invoices</a>
                 <a href="#" class="nav-link" data-page="payments"><i data-lucide="credit-card"></i> Payments</a>
@@ -97,11 +97,11 @@
             <!-- Populated by JS -->
         </div>
     </div>
-    <!-- Clear PWA Service Worker (Fixing Cache Bug) -->
+    <!-- Service Worker Registration -->
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                for(let registration of registrations) {
+            navigator.serviceWorker.getRegistrations().then(function (registrations) {
+                for (let registration of registrations) {
                     registration.unregister();
                     console.log('Unregistered old Service Worker to fetch fresh updates.');
                 }

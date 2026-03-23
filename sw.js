@@ -1,4 +1,4 @@
-const CACHE_NAME = 'markeledger-v2';
+const CACHE_NAME = 'markeledger-v3';
 const ASSETS = [
     './',
     './index.html',
@@ -12,7 +12,7 @@ const ASSETS = [
     './modules/finance.js',
     './modules/invoices.js',
     './modules/payments.js',
-    './modules/pricing.js',
+    './modules/rates.js',
     './modules/projects.js',
     './modules/quotations.js',
     './modules/recurring.js',
