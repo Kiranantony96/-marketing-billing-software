@@ -1,7 +1,9 @@
 // Core App State
 
-// Initialize Lucide Icons
-lucide.createIcons();
+// Initialize Lucide Icons safely
+if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+}
 
 // --- Routing and Navigation State ---
 let currentPage = 'dashboard';
@@ -45,7 +47,7 @@ window.renderPage = function (pageName) {
     }
 
     // Re-initialize icons in newly injected content
-    lucide.createIcons();
+    if (typeof lucide !== 'undefined') lucide.createIcons();
 }
 
 // Navigation Events
@@ -64,9 +66,10 @@ document.querySelectorAll('.nav-link').forEach(link => {
 
 // Seed Initial Data wrapper (example)
 async function seedInitialServices() {
-    const servicesCount = await db.services.count();
+    if(!window.db) return;
+    const servicesCount = await window.db.services.count();
     if (servicesCount === 0) {
-        await db.services.bulkAdd([
+        await window.db.services.bulkAdd([
             { name: "SEO", unit: "keyword", unitPrice: 1000, minCharge: 6000, editable: true },
             { name: "Content Writing", unit: "500_words", unitPrice: 100, minCharge: 100, editable: true },
             { name: "Google Ads", type: "percentage", percent: 10, minCharge: 5000, editable: true },
